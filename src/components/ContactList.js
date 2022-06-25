@@ -18,7 +18,7 @@ const ContactList = () => {
             <div>
                 <div>
                     {
-                        contacts.map(contact => <Contact kay={contact._id} contact={contact} />)
+                        contacts.map(contact => <Contact key={contact._id} contact={contact} />)
                     }
                 </div>
             </div>

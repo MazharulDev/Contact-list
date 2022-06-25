@@ -1,13 +1,17 @@
 import React, { useRef } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import auth from '../firebase.init';
 import './Css/NewContact.css'
 const NewContact = () => {
+    const [user] = useAuthState(auth);
     const userName = useRef();
     const phoneNumber = useRef();
     const handleAddContact = () => {
         const contactList = {
             name: userName.current.value,
-            phone: phoneNumber.current.value
+            phone: phoneNumber.current.value,
+            email: user.email
         }
 
         fetch('http://localhost:5000/allContact', {
