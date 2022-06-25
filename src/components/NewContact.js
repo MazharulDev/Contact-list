@@ -1,23 +1,46 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { toast } from 'react-toastify';
 import './Css/NewContact.css'
 const NewContact = () => {
+    const userName = useRef();
+    const phoneNumber = useRef();
+    const handleAddContact = () => {
+        const contactList = {
+            name: userName.current.value,
+            phone: phoneNumber.current.value
+        }
+
+        fetch('http://localhost:5000/allContact', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(contactList)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast("Successfully added Contact")
+                userName.current.value = ''
+                phoneNumber.current.value = ''
+            })
+    }
     return (
         <div>
             <h2 className='text-center text-2xl font-bold p-4'>Add Contact</h2>
             <div className='flex justify-center'>
-                <div class="form__group field">
-                    <input type="input" class="form__field" placeholder="Name" name="name" id='name' required />
-                    <label for="name" class="form__label">Name</label>
+                <div className="form__group field">
+                    <input type="input" className="form__field" placeholder="Name" name="name" id='name' ref={userName} required />
+                    <label htmlFor="name" className="form__label">Name</label>
                 </div>
             </div>
             <div className='flex justify-center'>
-                <div class="form__group field">
-                    <input type="input" class="form__field" placeholder="Phone Number" name="number" id='number' required />
-                    <label for="number" class="form__label">Phone Number</label>
+                <div className="form__group field">
+                    <input type="input" className="form__field" placeholder="Phone Number" name="number" id='number' ref={phoneNumber} required />
+                    <label htmlFor="number" className="form__label">Phone Number</label>
                 </div>
             </div>
             <div className='flex justify-center mt-5'>
-                <button className='btn'>Add Contact</button>
+                <button onClick={handleAddContact} className='btn'>Add Contact</button>
             </div>
         </div>
     );

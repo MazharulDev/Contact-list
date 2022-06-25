@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <div className='flex items-center justify-between px-4'>
             <div className='text-2xl p-4 flex items-center gap-2'>
-                <label for="my-drawer-2" class="cursor-pointer drawer-button lg:hidden"><AiOutlineMenuUnfold /></label>
+                <label htmlFor="my-drawer-2" className="cursor-pointer drawer-button lg:hidden"><AiOutlineMenuUnfold /></label>
                 <FcContacts className='text-4xl' />
                 <h2>Contact</h2>
             </div>
