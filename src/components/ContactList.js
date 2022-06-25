@@ -10,10 +10,10 @@ const ContactList = () => {
         fetch(`http://localhost:5000/allContact?email=${user.email}`)
             .then(res => res.json())
             .then(data => setContact(data))
-    }, [])
+    }, [user.email])
     return (
         <div>
-            <div className='flex justify-between pl-10 pr-20 gap-44 p-5 border-b-[1px] border-gray-600'>
+            <div className='lg:flex justify-between pl-10 pr-20 gap-44 p-5 border-b-[1px] border-gray-600'>
                 <h3>Name</h3>
                 <h3>Phone Number</h3>
             </div>

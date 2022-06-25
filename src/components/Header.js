@@ -6,6 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
 import { signOut } from 'firebase/auth';
 
+
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
     if (loading) {
@@ -24,7 +25,7 @@ const Header = () => {
             </div>
             <div>
                 <AiOutlineSearch className='absolute mt-4 ml-2 text-xl' />
-                <input type="text" placeholder="Search..." className="input w-96 bg-slate-700 focus:outline-0 focus:bg-slate-200 px-8" />
+                <input type="text" placeholder="Search..." className="input w-[90%] bg-slate-700 focus:outline-0 focus:bg-slate-200 px-8" />
             </div>
 
             <div className='flex items-center'>
@@ -32,7 +33,7 @@ const Header = () => {
                 <div className="dropdown dropdown-end">
                     <label tabIndex="0" className="btn btn-ghost btn-circle avatar online">
                         <div className="w-10 rounded-full">
-                            {photo ? <img className='rounded-full' width={30} src={photo} alt='' /> : <div className='text-sm h-full text-white bg-primary flex justify-center items-center'>{user?.displayName.substring(0, 1)}</div>}
+                            {photo ? <img className='rounded-full' width={30} src={photo} alt='' /> : <div className='text-2xl h-full text-white bg-primary flex justify-center items-center'>{user?.displayName.substring(0, 1)}</div>}
                         </div>
                     </label>
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52">
@@ -40,10 +41,7 @@ const Header = () => {
                     </ul>
                 </div>
             </div>
-            {/* <div className='flex'>
-                <p className='font-bold mr-4'>{user.displayName}</p>
-                {photo ? <img className='rounded-full' width={30} src={photo} alt='' /> : <div className='text-sm h-full text-white bg-primary flex justify-center items-center'>{user.displayName.substring(0, 1)}</div>}
-            </div> */}
+
         </div>
     );
 };

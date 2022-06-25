@@ -2,8 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import ContactList from './components/ContactList';
 import NewContact from './components/NewContact';
-import Test from './components/Test';
 import Home from './Home/Home';
+import CreateAccount from './shared/CreateAccount';
 import Login from './shared/Login';
 import RequireAuth from './shared/RequireAuth';
 
@@ -24,6 +24,7 @@ function App() {
           <Route path='new' element={<NewContact />}></Route>
         </Route>
         <Route path='/login' element={<Login />}></Route>
+        <Route path='/createAccount' element={<CreateAccount />}></Route>
       </Routes>
     </div >
   );
