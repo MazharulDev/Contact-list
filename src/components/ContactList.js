@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../firebase.init';
 import Contact from './Contact';
 
 const ContactList = () => {
+    const [user, loading] = useAuthState(auth);
     const [contacts, setContact] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/allContact')
+        fetch(`http://localhost:5000/allContact?email=${user.email}`)
             .then(res => res.json())
             .then(data => setContact(data))
     }, [])
