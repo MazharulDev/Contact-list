@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import auth from '../firebase.init';
 import Contact from './Contact';
 
@@ -25,6 +26,16 @@ const ContactList = () => {
                     }
                 </div>
             </div>
+            {
+                contacts.length === 0 && <div className=' mt-5'>
+                    <div className='flex justify-center mb-8'>
+                        <p>No Contact added</p>
+                    </div>
+                    <div className='flex justify-center'>
+                        <Link className='btn' to='new'>Add Contact</Link>
+                    </div>
+                </div>
+            }
         </div>
     );
 };

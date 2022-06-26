@@ -33,14 +33,14 @@ const NewContact = () => {
             <h2 className='text-center text-2xl font-bold p-4'>Add Contact</h2>
             <div className='flex justify-center'>
                 <div className="form__group field">
-                    <input type="input" className="form__field" placeholder="Name" name="name" id='name' ref={userName} required />
-                    <label htmlFor="name" className="form__label">Name</label>
+                    <input type="input" className="form__field" placeholder="Name" autoComplete='off' name="name" id='name' ref={userName} required />
+                    <label htmlFor="name" className="form__label" >Name</label>
                 </div>
             </div>
             <div className='flex justify-center'>
                 <div className="form__group field">
-                    <input type="input" className="form__field" placeholder="Phone Number" name="number" id='number' ref={phoneNumber} required />
-                    <label htmlFor="number" className="form__label">Phone Number</label>
+                    <input type="input" className="form__field" placeholder="Number" name="number" id='number' ref={phoneNumber} required />
+                    <label htmlFor="number" className="form__label">Number</label>
                 </div>
             </div>
             <div className='flex justify-center mt-5'>
