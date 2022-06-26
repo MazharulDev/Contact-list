@@ -5,19 +5,20 @@ import { AiOutlineMenuUnfold } from 'react-icons/ai'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
 import { signOut } from 'firebase/auth';
+import Loading from '../shared/Loading';
 
 
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
     if (loading) {
-        return <p>Loading...</p>
+        return <Loading />
     }
     const photo = user?.reloadUserInfo.photoUrl
     const logout = () => {
         signOut(auth)
     }
     return (
-        <div className='flex items-center justify-between px-4'>
+        <div className='flex items-center justify-between px-1 lg:px-4'>
             <div className='text-2xl p-4 flex items-center gap-2'>
                 <label htmlFor="my-drawer-2" className="cursor-pointer drawer-button lg:hidden"><AiOutlineMenuUnfold /></label>
                 <FcContacts className='text-4xl' />
@@ -25,11 +26,11 @@ const Header = () => {
             </div>
             <div>
                 <AiOutlineSearch className='absolute mt-4 ml-2 text-xl' />
-                <input type="text" placeholder="Search..." className="input w-[90%] bg-slate-700 focus:outline-0 focus:bg-slate-200 px-8" />
+                <input type="text" placeholder="Search..." className="input w-8 sm:w-[40%] lg:w-[90%] bg-slate-700 focus:outline-0 focus:bg-slate-200 px-8" />
             </div>
 
             <div className='flex items-center'>
-                <p className='font-bold mr-4'>{user?.displayName}</p>
+                <p className='font-bold mr-4 hidden lg:block'>{user?.displayName}</p>
                 <div className="dropdown dropdown-end">
                     <label tabIndex="0" className="btn btn-ghost btn-circle avatar online">
                         <div className="w-10 rounded-full">

@@ -4,6 +4,7 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-fireba
 import auth from '../firebase.init';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Loading from './Loading';
 
 const Login = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -31,18 +32,21 @@ const Login = () => {
     const handleGoogleLogin = () => {
         signInWithGoogle()
     }
+    if (loading || loadingWithGoogleSignIn) {
+        return <Loading />
+    }
     return (
         <div>
             <h2 className='text-center text-4xl my-4 font-bold p-4'>Login</h2>
             <div className='flex justify-center'>
                 <div className="form__group field">
-                    <input type="email" className="form__field" placeholder="Type Email Address" name="Email" id='Email' ref={emailAdd} required />
+                    <input type="email" className="form__field" placeholder="Type Email Address" autoComplete='off' name="Email" id='Email' ref={emailAdd} required />
                     <label htmlFor="email" className="form__label">Email</label>
                 </div>
             </div>
             <div className='flex justify-center'>
                 <div className="form__group field">
-                    <input type="password" className="form__field" placeholder="Password" name="password" id='password' ref={passwordAdd} required />
+                    <input type="password" className="form__field" placeholder="Password" autoComplete='off' name="password" id='password' ref={passwordAdd} required />
                     <label htmlFor="password" className="form__label">Password</label>
                 </div>
             </div>

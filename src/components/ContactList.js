@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../firebase.init';
+import Loading from '../shared/Loading';
 import Contact from './Contact';
 
 const ContactList = () => {
@@ -12,13 +13,16 @@ const ContactList = () => {
             .then(res => res.json())
             .then(data => setContact(data))
     }, [user.email])
+    if (loading) {
+        return <Loading />
+    }
     return (
         <div>
             <div className='lg:flex justify-between pl-10 pr-20 gap-44 p-5 border-b-[1px] border-gray-600'>
                 <h3>Name</h3>
                 <h3>Phone Number</h3>
             </div>
-            <h2>Contacts ({contacts.length})</h2>
+            <h2 className='pl-3'>Contacts ({contacts.length})</h2>
             <div>
                 <div>
                     {

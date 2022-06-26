@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import auth from '../firebase.init';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
+import Loading from './Loading';
 
 const CreateAccount = () => {
     const navigate = useNavigate();
@@ -31,7 +32,7 @@ const CreateAccount = () => {
         navigate('/login')
     }
     if (loading || updating) {
-        return <p>Loading...</p>
+        return <Loading />
     }
     return (
         <div>
